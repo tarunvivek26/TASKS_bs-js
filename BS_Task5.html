@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task5</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <form id="myForm">
+        <div class="mb-3">
+          <div class="input-group">
+            <span class="input-group-text"
+              ><i class="fas fa-image-portrait"></i
+            ></span>
+            <input
+              type="text"
+              class="form-control"
+              id="firstName"
+              placeholder="First Name"
+              required
+              data-name="First Name"
+            />
+          </div>
+          <span id="firstNameWarning" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+          <div class="input-group">
+            <span class="input-group-text"
+              ><i class="fas fa-image-portrait"></i
+            ></span>
+            <input
+              type="text"
+              class="form-control"
+              id="lastName"
+              placeholder="Last Name"
+              required
+              data-name="Last Name"
+            />
+          </div>
+          <span id="lastNameWarning" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+          <div class="input-group">
+            <span class="input-group-text"><i class="fas fa-house"></i></span>
+            <input
+              type="text"
+              class="form-control"
+              id="address"
+              placeholder="Address"
+              required
+              data-name="Address"
+            />
+          </div>
+          <span id="addressWarning" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+          <div class="input-group">
+            <span class="input-group-text"><i class="fas fa-house"></i></span>
+            <input
+              type="text"
+              class="form-control"
+              id="city"
+              placeholder="City"
+              required
+              data-name="City"
+            />
+          </div>
+          <span id="cityWarning" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+          <div class="input-group">
+            <span class="input-group-text"><i class="fas fa-list"></i></span>
+            <select
+              class="form-control"
+              id="state"
+              required
+              data-name="State (India)"
+            >
+              <option value="state1">State 1</option>
+              <option value="state2">State 2</option>
+            </select>
+          </div>
+          <span id="stateWarning" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+          <div class="input-group">
+            <span class="input-group-text"><i class="fas fa-phone"></i></span>
+            <input
+              type="tel"
+              class="form-control"
+              id="mobileNumber"
+              placeholder="Mobile Number"
+              required
+              data-name="Mobile Number"
+            />
+          </div>
+          <span id="mobileNumberWarning" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+          <div class="input-group">
+            <span class="input-group-text"
+              ><i class="far fa-envelope"></i
+            ></span>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              placeholder="Email"
+              required
+              data-name="Email"
+            />
+          </div>
+          <span id="emailWarning" class="text-danger"></span>
+        </div>
+
+        <button
+          type="button"
+          class="btn btn-danger btn-block"
+          onclick="validateForm()"
+        >
+          Send
+        </button>
+      </form>
+    </div>
+
+    <!-- Include Bootstrap JavaScript and other libraries -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      function validateForm() {
+        const form = document.getElementById("myForm");
+        const inputs = form.querySelectorAll(
+          "input[required], select[required]"
+        );
+
+        let isValid = true;
+
+        inputs.forEach((input) => {
+          if (input.value.trim() === "") {
+            isValid = false;
+            input.classList.add("is-invalid");
+            const fieldName = input.getAttribute("data-name");
+            const warningId = input.id + "Warning";
+            document.getElementById(warningId).textContent =
+              fieldName + " is required.";
+          } else {
+            input.classList.remove("is-invalid");
+            const warningId = input.id + "Warning";
+            document.getElementById(warningId).textContent = "";
+          }
+        });
+
+        if (isValid) {
+          form.submit();
+        }
+      }
+    </script>
+  </body>
+</html>

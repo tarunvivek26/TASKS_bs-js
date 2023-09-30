@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Validation</title>
+    <style>
+      .form-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+
+      .form-group {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        min-width: 100px;
+        text-align: right;
+        margin-right: 10px;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      .warning {
+        color: red;
+        margin-left: 10px;
+      }
+
+      .submit-button {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-container">
+      <form>
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" id="name" />
+          <span id="nameWarning" class="warning"></span>
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="text" id="email" />
+          <span id="emailWarning" class="warning"></span>
+        </div>
+        <div class="form-group">
+          <label for="web">Website:</label>
+          <input type="text" id="web" />
+          <span id="webWarning" class="warning"></span>
+        </div>
+        <div class="form-group">
+          <label for="mess">Message:</label>
+          <textarea cols="20" rows="4" id="mess"></textarea>
+          <span id="messWarning" class="warning"></span>
+        </div>
+        <button type="button" class="submit-button" onclick="check()">
+          Submit
+        </button>
+      </form>
+    </div>
+    <script>
+      function check() {
+        const nameInput = document.getElementById("name");
+        const emailInput = document.getElementById("email");
+        const webInput = document.getElementById("web");
+        const messInput = document.getElementById("mess");
+
+        const nameWarning = document.getElementById("nameWarning");
+        const emailWarning = document.getElementById("emailWarning");
+        const webWarning = document.getElementById("webWarning");
+        const messWarning = document.getElementById("messWarning");
+
+        let isValid = true;
+        if (nameInput.value.trim() === "") {
+          nameWarning.textContent = "This field is required!";
+          isValid = false;
+        } else {
+          nameWarning.textContent = "";
+        }
+        if (emailInput.value.trim() === "") {
+          emailWarning.textContent = "This field is required!";
+          isValid = false;
+        } else {
+          emailWarning.textContent = "";
+        }
+        if (webInput.value.trim() === "") {
+          webWarning.textContent = "This field is required!";
+          isValid = false;
+        } else {
+          webWarning.textContent = "";
+        }
+        if (messInput.value.trim() === "") {
+          messWarning.textContent = "This field is required!";
+          isValid = false;
+        } else {
+          messWarning.textContent = "";
+        }
+        if (isValid) {
+          alert("Form submitted successfully!");
+        }
+      }
+    </script>
+  </body>
+</html>
